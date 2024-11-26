@@ -70,9 +70,11 @@ solicitar_nome_item(): Solicita o nome de um item.
 solicitar_dados_usuario(): Solicita o nome e CPF de um novo usuário.
 solicitar_quantidade(): Solicita a quantidade de unidades de um item que o usuário deseja adicionar ao carrinho.
 solicitar_indice_item(): Solicita o índice de um item para remoção do estoque.
-Fluxo de Execução
-O fluxo do programa é controlado pela função executar(), que exibe o menu principal e permite que o usuário escolha uma ação. As principais funcionalidades incluem:
 
+Fluxo de Execução
+O fluxo do programa é controlado pela função executar(), que exibe o menu principal e permite que o usuário escolha uma ação. 
+
+As principais funcionalidades incluem:
 Cadastrar novo usuário: Permite registrar um usuário na loja.
 Adicionar item ao estoque: Permite adicionar novos itens ao estoque da loja.
 Ver itens no estoque: Exibe todos os itens disponíveis no estoque.
@@ -81,23 +83,24 @@ Concluir compra: Finaliza a compra de um usuário, subtraindo o total do caixa e
 Remover item do estoque: Permite que o administrador remova um item do estoque.
 Ver histórico de compras: Exibe o histórico de compras realizadas, mostrando os itens comprados e os usuários.
 Ver saldo do caixa: Exibe o saldo atual do caixa da loja.
+
 Exemplo de Uso
 Cadastrar usuário:
-
 O sistema solicita o nome e CPF do usuário e o registra.
+
 Adicionar item ao estoque:
-
 O administrador adiciona um novo item, informando nome, preço e quantidade no estoque.
+
 Adicionar item à cesta:
-
 Um usuário pode buscar um item e adicionar ao seu carrinho, especificando a quantidade desejada.
+
 Concluir compra:
-
 O usuário finaliza a compra e o sistema calcula o total da compra, atualiza o saldo do caixa e limpa a cesta.
-Ver histórico de compras e saldo do caixa:
 
+Ver histórico de compras e saldo do caixa:
 O administrador pode consultar o histórico de compras realizadas e o saldo atual do caixa da loja.
 Observações
 O programa depende de entradas do usuário via console, o que exige que o programa seja executado em um ambiente interativo.
 O código pode ser expandido para incluir mais funcionalidades, como a modificação de preços de itens, descontos, ou relatórios mais detalhados.
+
 Caso seja necessário adicionar um sistema de persistência (salvar dados em arquivos ou banco de dados), o código pode ser estendido para incluir essa funcionalidade.
