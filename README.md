@@ -14,6 +14,8 @@ Melhorias no Código
 A interação com o usuário foi organizada de forma mais intuitiva. Por exemplo, ao buscar por um item, agora é solicitado apenas o nome do item e, ao adicionar um item ao carrinho, a quantidade é solicitada de forma mais simples.
 O sistema agora também verifica se a quantidade desejada do item está disponível em estoque antes de adicioná-lo ao carrinho, garantindo que o cliente não compre mais do que há disponível.
 
+Nova opção no menu: A opção "Remover item do estoque" foi adicionada, sendo necessario apenas o cliente selecionar essa opção é o sistema ira mostrar todos os itens no estoque e qual e quantidade que ela quer remover
+
 Conclusão
 As melhorias realizadas visam tornar o código mais genérico, legível e modular, facilitando manutenções futuras e a expansão para diferentes tipos de lojas ou sistemas de vendas. 
 As alterações aumentam a clareza da estrutura e garantem uma experiência de usuário mais robusta, com validações e interações bem definidas.
