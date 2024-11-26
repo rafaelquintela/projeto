@@ -1,3 +1,6 @@
+
+Aluno: Rafael Soares Quintela
+
 Documentação do Sistema de Loja Virtual
 
 Visão Geral
