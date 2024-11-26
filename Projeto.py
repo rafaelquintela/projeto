@@ -62,6 +62,13 @@ class Loja:
                 return item
         return None
 
+    def remover_item(self, indice):
+        if 0 <= indice < len(self.itens):
+            item = self.itens.pop(indice)
+            print(f"Item {item.nome} removido do estoque.")
+        else:
+            print("Índice inválido! Nenhum item removido.")
+
     def registrar_usuario(self, usuario):
         self.usuarios.append(usuario)
 
@@ -72,8 +79,11 @@ class Loja:
         usuario.carrinho = Cesta()  # Limpa a cesta após a compra
 
     def listar_itens(self):
-        for item in self.itens:
-            print(item)
+        if not self.itens:
+            print("Não há itens no estoque.")
+        else:
+            for i, item in enumerate(self.itens):
+                print(f"{i+1} - {item}")  # Exibe índice junto com a descrição do item
 
 
 class Interface:
@@ -85,7 +95,8 @@ class Interface:
         print("3 - Ver itens no estoque")
         print("4 - Adicionar item à cesta")
         print("5 - Concluir compra")
-        print("6 - Sair")
+        print("6 - Remover item do estoque")  # Nova opção
+        print("7 - Sair")
         return int(input("Escolha uma opção: "))
 
     @staticmethod
@@ -101,6 +112,10 @@ class Interface:
     @staticmethod
     def solicitar_quantidade():
         return int(input("Quantas unidades deseja adicionar? "))
+
+    @staticmethod
+    def solicitar_indice_item():
+        return int(input("Informe o número do item que deseja remover: ")) - 1  # Subtraímos 1 para ajustar o índice
 
 
 def executar():
@@ -155,10 +170,19 @@ def executar():
             else:
                 print("Usuário não encontrado!")
 
-        elif opcao == 6:
+        elif opcao == 6:  # Remover item do estoque
+            print("\nItens no estoque:")
+            loja.listar_itens()
+            indice = Interface.solicitar_indice_item()
+            loja.remover_item(indice)
+
+        elif opcao == 7:
             print("Saindo... Até logo!")
             break
 
 
 if __name__ == "__main__":
     executar()
+
+
+
