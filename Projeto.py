@@ -1,57 +1,9 @@
-class Item:
-    def __init__(self, nome, preco, estoque):
-        self.nome = nome
-        self.preco = preco
-        self.estoque = estoque
-
-    def reduzir_estoque(self, quantidade_vendida):
-        self.estoque -= quantidade_vendida
-
-    def __str__(self):
-        return f"{self.nome} - R${self.preco:.2f} - {self.estoque} unidades disponíveis"
-
-
-class Usuario:
-    def __init__(self, nome, documento):
-        self.nome = nome
-        self.documento = documento
-        self.carrinho = Cesta()
-
-    def adicionar_item(self, item, quantidade):
-        self.carrinho.incluir_item(item, quantidade)
-
-    def visualizar_cesta(self):
-        return self.carrinho
-
-    def __str__(self):
-        return f"{self.nome} - CPF: {self.documento}"
-
-
-class Cesta:
-    def __init__(self):
-        self.itens = []
-
-    def incluir_item(self, item, quantidade):
-        if item.estoque >= quantidade:
-            item.reduzir_estoque(quantidade)
-            self.itens.append((item, quantidade))
-        else:
-            print(f"Estoque insuficiente de {item.nome}. Disponível: {item.estoque}")
-
-    def calcular_total(self):
-        total = sum(item.preco * quantidade for item, quantidade in self.itens)
-        return total
-
-    def __str__(self):
-        detalhes = "\n".join([f"{item.nome} - {quantidade} unidade(s) - R${item.preco * quantidade:.2f}" for item, quantidade in self.itens])
-        total = self.calcular_total()
-        return f"Cesta de compras:\n{detalhes}\nTotal: R${total:.2f}"
-
-
 class Loja:
     def __init__(self):
         self.itens = []
         self.usuarios = []
+        self.historico_compras = []  # Histórico de compras
+        self.saldo_caixa = 0.0  # Saldo do caixa
 
     def adicionar_item(self, item):
         self.itens.append(item)
@@ -76,6 +28,8 @@ class Loja:
         total = usuario.carrinho.calcular_total()
         print(f"\n{usuario.nome}, o total da sua compra é R${total:.2f}")
         print("Agradecemos pela sua compra!")
+        self.historico_compras.append((usuario, usuario.carrinho))  # Adiciona ao histórico
+        self.saldo_caixa += total  # Atualiza o saldo do caixa
         usuario.carrinho = Cesta()  # Limpa a cesta após a compra
 
     def listar_itens(self):
@@ -85,6 +39,18 @@ class Loja:
             for i, item in enumerate(self.itens):
                 print(f"{i+1} - {item}")  # Exibe índice junto com a descrição do item
 
+    def listar_compras(self):
+        if not self.historico_compras:
+            print("Nenhuma compra realizada ainda.")
+        else:
+            print("\nHistórico de compras:")
+            for usuario, cesta in self.historico_compras:
+                print(f"\nCompra de {usuario.nome}:")
+                print(cesta)
+                print("-" * 30)
+
+    def ver_saldo_caixa(self):
+        print(f"Saldo atual do caixa: R${self.saldo_caixa:.2f}")
 
 class Interface:
     @staticmethod
@@ -95,8 +61,10 @@ class Interface:
         print("3 - Ver itens no estoque")
         print("4 - Adicionar item à cesta")
         print("5 - Concluir compra")
-        print("6 - Remover item do estoque")  # Nova opção
-        print("7 - Sair")
+        print("6 - Remover item do estoque")
+        print("7 - Ver histórico de compras")
+        print("8 - Ver saldo do caixa")  # Nova opção para ver o saldo do caixa
+        print("9 - Sair")
         return int(input("Escolha uma opção: "))
 
     @staticmethod
@@ -116,7 +84,6 @@ class Interface:
     @staticmethod
     def solicitar_indice_item():
         return int(input("Informe o número do item que deseja remover: ")) - 1  # Subtraímos 1 para ajustar o índice
-
 
 def executar():
     loja = Loja()
@@ -176,13 +143,19 @@ def executar():
             indice = Interface.solicitar_indice_item()
             loja.remover_item(indice)
 
-        elif opcao == 7:
+        elif opcao == 7:  # Ver histórico de compras
+            loja.listar_compras()
+
+        elif opcao == 8:  # Ver saldo do caixa
+            loja.ver_saldo_caixa()
+
+        elif opcao == 9:
             print("Saindo... Até logo!")
             break
 
-
 if __name__ == "__main__":
     executar()
+
 
 
 
