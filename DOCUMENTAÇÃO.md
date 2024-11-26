@@ -1,14 +1,18 @@
 Documentação do Sistema de Loja Virtual
+
 Visão Geral
 Este sistema simula o gerenciamento de uma loja virtual, permitindo que usuários se cadastrem, adicionem itens ao estoque, gerenciem suas cestas de compras e realizem compras. Além disso, o sistema permite que os administradores vejam o saldo do caixa e o histórico de compras feitas pelos usuários.
 
-O sistema foi dividido em classes que representam diferentes entidades e funcionalidades:
 
+
+O sistema foi dividido em classes que representam diferentes entidades e funcionalidades:
 Item: Representa um produto no estoque.
 Usuario: Representa um usuário da loja que pode adicionar itens à sua cesta e realizar compras.
+
 Cesta: Representa o carrinho de compras de um usuário.
 Loja: Representa a loja em si, contendo os itens em estoque, usuários registrados e o histórico de compras.
 Interface: Responsável pela interação com o usuário, exibindo menus e solicitando entradas.
+
 Estrutura de Classes
 1. Classe Item
 A classe Item representa um produto no estoque da loja.
@@ -20,9 +24,9 @@ estoque: A quantidade disponível no estoque (inteiro).
 Métodos:
 reduzir_estoque(quantidade_vendida): Reduz o estoque do item de acordo com a quantidade vendida.
 __str__(): Retorna uma string com informações sobre o item, como nome, preço e quantidade disponível.
+
 2. Classe Usuario
 A classe Usuario representa um usuário registrado na loja.
-
 Atributos:
 nome: Nome do usuário (string).
 documento: Documento de identificação do usuário (string, CPF).
@@ -31,18 +35,18 @@ Métodos:
 adicionar_item(item, quantidade): Adiciona um item ao carrinho de compras do usuário.
 visualizar_cesta(): Exibe o conteúdo atual da cesta do usuário.
 __str__(): Retorna uma string com o nome e o CPF do usuário.
+
 3. Classe Cesta
 A classe Cesta representa o carrinho de compras de um usuário.
-
 Atributos:
 itens: Lista de tuplas, onde cada tupla contém um item e a quantidade comprada desse item.
 Métodos:
 incluir_item(item, quantidade): Adiciona um item à cesta, se houver estoque suficiente.
 calcular_total(): Calcula o total da compra, multiplicando o preço de cada item pela quantidade comprada e somando os valores.
 __str__(): Retorna uma string com os detalhes de todos os itens da cesta, incluindo o total da compra.
+
 4. Classe Loja
 A classe Loja representa a loja e gerencia os itens em estoque, usuários registrados e o histórico de compras.
-
 Atributos:
 itens: Lista de itens no estoque da loja (objetos da classe Item).
 usuarios: Lista de usuários registrados na loja (objetos da classe Usuario).
@@ -57,9 +61,9 @@ realizar_compra(usuario): Finaliza a compra de um usuário, somando o valor tota
 listar_itens(): Exibe todos os itens disponíveis no estoque.
 listar_compras(): Exibe o histórico de compras feitas na loja.
 ver_saldo_caixa(): Exibe o saldo atual do caixa da loja.
+
 5. Classe Interface
 A classe Interface é responsável pela interação com o usuário por meio de menus e entrada de dados.
-
 Métodos:
 exibir_menu_principal(): Exibe o menu principal com as opções disponíveis para o usuário.
 solicitar_nome_item(): Solicita o nome de um item.
