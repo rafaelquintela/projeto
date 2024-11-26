@@ -1,4 +1,6 @@
-Este código implementa um sistema simples de gerenciamento de uma loja com funcionalidades para cadastro de usuários, controle de estoque, carrinho de compras, e finalização de compras. Aqui está um resumo do que ele faz:
+Este código implementa um sistema simples de gerenciamento de uma loja com funcionalidades para cadastro de usuários, controle de estoque, carrinho de compras, e finalização de compras. 
+
+Aqui está um resumo do que ele faz:
 
 ### Classes:
 1. **Item**: Representa um produto da loja, com atributos como nome, preço e estoque. Inclui métodos para reduzir o estoque quando o item é vendido e para exibir suas informações.
